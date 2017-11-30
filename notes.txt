@@ -1,0 +1,4 @@
+Resize images
+Here is an app that can take care of that: django-smartfields. It will also remove an old image whenever a new one is uploaded.
+https://github.com/lehins/django-smartfields
+

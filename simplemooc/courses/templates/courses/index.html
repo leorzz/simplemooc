@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 <div class="pure-g-r content-ribbon">
     <div class="pure-u-1">
@@ -13,7 +15,11 @@
             <div class="pure-g-r content-ribbon">
                 <div class="pure-u-1-2">
                     <div class="l-box">
-                        <a href=""><img src="http://placehold.it/140x100" alt="{{ course.name }}"></a>
+                        {%  if course.image %}
+                            <a href=""><img src="{{ course.image.url }}" alt="{{ course.name }}" heigth="400" width="250"></a>
+                        {% else %}
+                            <a href=""><img src="{% static 'img/course_default.png' %}" alt="{{ course.name }}" heigth="400" width="250"></a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="pure-u-1-3">
