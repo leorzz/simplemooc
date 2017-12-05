@@ -8,6 +8,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^', include('simplemooc.core.urls', namespace='core')),
+    url(r'^accounts/', include('simplemooc.accounts.urls', namespace='accounts')),
     url(r'^courses/', include('simplemooc.courses.urls', namespace='courses')),
     url(r'^admin/', admin.site.urls),
 ]

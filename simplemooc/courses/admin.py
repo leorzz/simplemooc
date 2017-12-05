@@ -4,6 +4,7 @@ from django.contrib import admin
 
 from .models import Course
 
+# Opçções da classe Course - Customizações
 class CourseAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'start_date', 'created_at'] #Campos apresentados no admin de courses
     search_fields = ['name', 'slug'] # acrescenta um campo de pesquisa utilizando as colunas name e slug

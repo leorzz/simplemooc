@@ -4,13 +4,29 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
+    <meta name="description" content="Simple MOOC - Uma simples plataforma de ensino a distância.">
     <title>Simple MOOC</title>
     
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
     
+    <style media="screen" type="text/css">
+        .footer {
+            background: #111;
+            color: #666;
+            text-align: center;
+            padding: 1em;
+            font-size: 80%;
+        }
+        ul.errorlist {
+            margin: 0;
+            padding: 0;
+        }
+        ul.errorlist li {
+            color: #C53F3F;display: block;margin: 0.3em 0;font-size: 0.9em;border: none;padding: 0;
+        }
+    </style>    
     
-    
+
         <!--[if lte IE 8]>
             <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
         <![endif]-->
@@ -36,12 +52,15 @@
                 <li class="pure-menu-item"><a href="{% url 'core:home' %}" class="pure-menu-link">Home</a></li>
                 <li class="pure-menu-item"><a href="{% url 'courses:index' %}" class="pure-menu-link">Courses</a></li>
                 <li class="pure-menu-item"><a href="{% url 'core:about' %}" class="pure-menu-link">About</a></li>
-
-                <li class="pure-menu-item" class="menu-item-divided pure-menu-selected">
-                    <a href="#" class="pure-menu-link">Services</a>
-                </li>
-
                 <li class="pure-menu-item"><a href="{% url 'core:contact' %}" class="pure-menu-link">Contact</a></li>
+                {% comment %}
+                    https://stackoverflow.com/questions/17032174/having-trouble-with-user-is-authenticated-in-django-template
+                {% endcomment %}
+                {% if user.is_authenticated %}
+                    <li class="pure-menu-item"><a href="{% url 'accounts:logout' %}" class="pure-menu-link">Logout</a></li>
+                {% else %}
+                    <li class="pure-menu-item"><a href="{% url 'accounts:login' %}" class="pure-menu-link">Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

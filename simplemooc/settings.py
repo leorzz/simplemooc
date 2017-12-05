@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'simplemooc.core',
+    'simplemooc.accounts',
     'simplemooc.courses',
 ]
 
@@ -124,3 +126,23 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'simplemooc', 'media')
 MEDIA_URL = '/media/'
+
+# E-mails
+#https://gilang.chandrasa.com/blog/sending-email-in-django-with-gmail/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # apenas escreve os campos do email na tela ao inves de enviar
+DEFAULT_FROM_EMAIL = 'Leo Rzz <chokmahh@gmail.com>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'chokmahh@gmail.com'
+EMAIL_HOST_PASSWORD = 'chimbica#@!'
+EMAIL_PORT = 587
+#EMAIL_USE_SSL=True
+#EMAIL_PORT=465
+
+CONTACT_EMAIL = 'chokmahh@gmail.com'
+
+# Auth
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'core:home'
+LOGOUT_URL = 'accounts:logout'
