@@ -25,7 +25,7 @@ SECRET_KEY = 'b0bre7uq#vj9=1wz+jlcradxop*g%pm!_&z(=83h50*8qako*a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =  ['127.0.0.1', 'localhost', 'simplemooc-leorzz.c9users.io']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 

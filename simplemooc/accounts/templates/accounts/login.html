@@ -4,13 +4,11 @@
 <div class="pure-g-r content-ribbon">
     <div class="pure-u-1">
         <h2>Informe seus dados de cadastro</h2>
-        <form class="pure-form pure-form-stacked" method="post">
+        <form class="pure-form pure-form-stacked" role="form" action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             <fieldset>
-                {# Erros gerais #}
                 {{ form.non_field_errors }}
 
-                {# 'form' vem da view do django #}
                 {% for field in form %}
                 <div class="pure-control-group">
                     {{ field.label_tag }}
@@ -21,10 +19,11 @@
 
                 <div class="pure-controls">
                     <button type="submit" class="pure-button pure-button-primary">Entrar</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
                 </div>
             </fieldset>
             <p>
-                Não cadastrado? <a href="{% url 'accounts:register' %}" title="">Cadastre-se</a> <br />
+                Não é cadastrado? <a href="{% url 'accounts:register' %}" title="">Cadastre-se</a> <br />
                 Esqueceu a senha? <a href="" title="">Nova senha</a> <br />
             </p>
         </form>
