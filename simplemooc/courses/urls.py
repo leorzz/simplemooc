@@ -5,4 +5,8 @@ urlpatterns = [
     url(r'^$', simplemooc.courses.views.index, name='index'),
     #url(r'^(?P<pk>\d+)/$', simplemooc.courses.views.details, name='details'), # utilizará o codigo na url
     url(r'^(?P<slug>[\w_-]+)/$', simplemooc.courses.views.details, name='details'), # utlizara o slug, \w+ = 1 ou mais letras
+    
+    url(r'^(?P<slug>[\w_-]+)/enrollment/$', simplemooc.courses.views.enrollment, name='enrollment'),
 ]
+
+

@@ -2,3 +2,13 @@ Resize images
 Here is an app that can take care of that: django-smartfields. It will also remove an old image whenever a new one is uploaded.
 https://github.com/lehins/django-smartfields
 
+
+Aula 53 - Implementando a inscrição do curso 
+Testando
+In [3]: from simplemooc.courses.models import Enrollment
+In [4]: Enrollment.objects.all()
+Out[4]: <QuerySet [<Enrollment: Enrollment object>]>
+In [6]: Enrollment.objects.all()[0].user
+Out[6]: <User: leo>
+In [7]: Enrollment.objects.all()[0].course
+Out[7]: <Course: Django para iniciantes>

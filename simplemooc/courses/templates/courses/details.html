@@ -16,7 +16,7 @@
                     {{ course.description }}
                 </h2>
                 <p>
-                    <a href="#" class="pure-button primary-button">Inscreva-se</a>
+                    <a href="{% url 'courses:enrollment' course.slug %}" class="pure-button primary-button">Inscreva-se</a>
                 </p>
             </div>
         </div>
@@ -58,7 +58,7 @@
                 <div class="pure-control-group">
                     {{ field.label_tag }}
                     {{ field }}
-                    
+                    {{ field.errors }}
 {% comment %}
                     {# O bloco abaixo tambem pode ser substituido por {{ field.errors }} #}
                     {% if field.errors %}

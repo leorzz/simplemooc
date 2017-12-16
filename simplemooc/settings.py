@@ -129,20 +129,23 @@ MEDIA_URL = '/media/'
 
 # E-mails
 #https://gilang.chandrasa.com/blog/sending-email-in-django-with-gmail/
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # apenas escreve os campos do email na tela ao inves de enviar
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'Leo Rzz <chokmahh@gmail.com>'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_HOST = 'mail.smtp2go.com'
 EMAIL_HOST_USER = 'chokmahh@gmail.com'
-EMAIL_HOST_PASSWORD = '****'
-EMAIL_PORT = 587
-#EMAIL_USE_SSL=True
-#EMAIL_PORT=465
+f = open('/home/ubuntu/pass.txt')
+EMAIL_HOST_PASSWORD = f.readline().strip()
+EMAIL_PORT = 443
+EMAIL_USE_SSL=True
+
+
 
 CONTACT_EMAIL = 'chokmahh@gmail.com'
-
 # Auth
 LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'core:home'
 LOGOUT_URL = 'accounts:logout'
+# Mudar o model default do django para usuário
+AUTH_USER_MODEL = 'accounts.User' # indica qual será o model utilizado para o usuario

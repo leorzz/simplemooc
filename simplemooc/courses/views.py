@@ -1,9 +1,11 @@
 # colocar na view apenas o necessário. Minimo possivel.
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
-from .models import Course
+from .models import Course, Enrollment
 from .forms import ContactCourse # o ponto indica que o import é relatico ao proprio pacote
 
 def index(request):
@@ -44,3 +46,28 @@ def details(request, slug):
     
     template_name = 'courses/details.html'
     return render(request, template_name, context)
+    
+    
+@login_required
+def enrollment(request, slug):
+    course = get_object_or_404(Course, slug=slug)
+    enrollment, created = Enrollment.objects.get_or_create(
+            user=request.user,  # Filtro=Usuario que esta logado no sistema
+            course=course     # Propriedade do model Enrollment
+        )   # Este metodo retorna uma tupla. A inscrição(pega ou cria) e um bool
+            # se foi criado ou nao
+            
+    if created:
+        enrollment.active() # Metodo criado anteriormente
+        messages.success(request, 'Você foi inscrito no curso com sucesso.')
+    else:
+        messages.info(request, 'Você ja está inscrito no curso.')
+    
+    from django.contrib.messages import get_messages
+    storage = get_messages(request)
+    for m in storage:
+        print('========>',m)
+    
+    return redirect('accounts:dashboard')
+        
+    

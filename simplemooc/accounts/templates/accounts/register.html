@@ -4,7 +4,7 @@
 <div class="pure-g-r content-ribbon">
     <div class="pure-u-1">
         <h2>Informe seus dados</h2>
-        <form class="pure-form pure-form-stacked" method="post">
+        <form class="pure-form pure-form-stacked" novalidate method="post">
             {% csrf_token %}
             <fieldset>
                 {# Erros gerais #}
@@ -20,7 +20,7 @@
                 {% endfor %}
 
                 <div class="pure-controls">
-                    <button type="submit" class="pure-button pure-button-primary">Entrar</button>
+                    <button type="submit" class="pure-button pure-button-primary">Registrar</button>
                 </div>
             </fieldset>
         </form>

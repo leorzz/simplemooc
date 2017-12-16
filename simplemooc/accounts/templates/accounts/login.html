@@ -4,7 +4,7 @@
 <div class="pure-g-r content-ribbon">
     <div class="pure-u-1">
         <h2>Informe seus dados de cadastro</h2>
-        <form class="pure-form pure-form-stacked" role="form" action="{% url 'accounts:login' %}" method="post">
+        <form class="pure-form pure-form-stacked" novalidate role="form" action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             <fieldset>
                 {{ form.non_field_errors }}
@@ -24,7 +24,7 @@
             </fieldset>
             <p>
                 Não é cadastrado? <a href="{% url 'accounts:register' %}" title="">Cadastre-se</a> <br />
-                Esqueceu a senha? <a href="" title="">Nova senha</a> <br />
+                Esqueceu a senha? <a href="{% url 'accounts:password_reset' %}" title="">Nova senha</a> <br />
             </p>
         </form>
     </div>
