@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+<!--Procura por default na pasta templatetags -->
+{% load courses_tags %}
+<!--Tambem poderia de utilizado {# load simplemooc.courses.courses_tags #} -->
+
 {% block content %}
 <div class="pure-g-r content-ribbon">
     <div class="pure-u-1">
@@ -14,8 +18,7 @@
         <div class="pure-menu pure-menu-open">
             <a class="pure-menu-heading">Meus Cursos</a>
             <ul>
-                <li><a href="#">Curso 1</a></li>
-                <li><a href="#">Curso 2</a></li>
+                {% my_courses user %}
             </ul>
                 <a class="pure-menu-heading">Minha Conta</a>
             <ul>

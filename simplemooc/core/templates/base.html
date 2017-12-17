@@ -80,13 +80,10 @@
         <div class="content">
             {% if messages %}
             <aside class="pure-u-1 ">
-                <p>Comentarios</p>
                 {% for message in messages %}
                     <p>{{ message }}</p>
                 {% endfor %}
             </aside>
-            {% else %}
-                <p>Sem comentarios</p>
             {% endif %}
             
             {% block content %}{% endblock %}

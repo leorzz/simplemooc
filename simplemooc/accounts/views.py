@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404 #  render adici
 from django.contrib.auth.forms import (UserCreationForm, PasswordChangeForm, SetPasswordForm) # modelform
 from django.conf import settings
 from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib import messages
 
 from simplemooc.core.utils import generate_hash_key
+from simplemooc.courses.models import Enrollment
 
 # Importa a classe criada RegisterForm onde foi adicionado o campo email
 from .forms import RegisterForm, EditAccountForm, PasswordResetForm
@@ -20,7 +22,9 @@ from django.contrib.auth.decorators import login_required
 @login_required 
 def dashboard(request):
     template_name = 'accounts/dashboard.html'
-    return render(request, template_name)
+    context = {}
+    #context['enrollments'] = Enrollment.objects.filter(user=request.user)
+    return render(request, template_name, context)
 
 @login_required
 def edit(request):
@@ -30,8 +34,11 @@ def edit(request):
         form = EditAccountForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            form = EditAccountForm(instance=request.user)
-            context['success'] = True
+            messages.success(
+                    request, 'Os dados da conta foram alterados com sucesso'
+                )
+            #form = EditAccountForm(instance=request.user)
+            #context['success'] = True
     else:
         form = EditAccountForm(instance=request.user)
     context['form'] = form

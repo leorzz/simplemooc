@@ -59,15 +59,17 @@ def enrollment(request, slug):
             
     if created:
         enrollment.active() # Metodo criado anteriormente
-        messages.success(request, 'Você foi inscrito no curso com sucesso.')
+        messages.success(request, "Você foi inscrito no curso '%s' com sucesso." % course)
     else:
-        messages.info(request, 'Você ja está inscrito no curso.')
+        messages.info(request, "Você ja está inscrito no curso '%s'." % course)
     
-    from django.contrib.messages import get_messages
-    storage = get_messages(request)
-    for m in storage:
-        print('========>',m)
+    #messages.add_message(request, messages.INFO, 'Hello world.')
+    #from django.contrib.messages import get_messages
+    #storage = get_messages(request)
+    #for m in storage:
+    #    print('========>',m)
     
-    return redirect('accounts:dashboard')
+    template_name = 'accounts/dashboard.html'
+    return render(request, template_name)    
         
     
